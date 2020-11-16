@@ -4,7 +4,14 @@ import React from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
+// Redux
+import { useDispatch } from "react-redux";
+// import { loadDetail } from "../actions/detailAction";
+
 const Game = ({ name, released, image, id }) => {
+  // load
+  const dispatch = useDispatch();
+
   return (
     <StyledGame>
       <h3>{name}</h3>
@@ -25,6 +32,7 @@ const StyledGame = styled(motion.div)`
     width: 100%;
     height: 40vh;
     object-fit: cover;
+    pointer-events: none;
   }
 `;
 

@@ -29,10 +29,22 @@ const GlobalStyles = createGlobalStyle`
         width: 100%;
     }
     h2{
+        text-align: center;
         font-size: 3rem;
         font-family: 'Goldman', cursive;
         font-weight: lighter;
         color: #333;
+    }
+
+    h3{
+        font-size: 1.6rem;
+        color: #444;
+        padding: 1.5rem;
+    }
+
+    a{
+        text-decoration: none;
+
     }
 
 `;
