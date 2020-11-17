@@ -13,29 +13,38 @@ const GameDetail = () => {
   return (
     <CardShadow className="card-shadow">
       <Detail className="detail">
-        <div className="stats">
+        <Stats className="stats">
           <div className="rating">
-            <h3>{game.name}</h3>
-            <p>Rating: {game.rating}</p>
+            <h3 className="title">{game.name}</h3>
+            <p>
+              Rating: <span className="rate">{game.rating}</span>
+            </p>
           </div>
-          <h3>Platforms</h3>
-          <div className="platforms">
-            {game.platforms.map((data) => (
-              <h3 key={data.platform.id}>{data.platform.name}</h3>
-            ))}
-          </div>
-        </div>
-        <div className="media">
+        </Stats>
+        <Media className="media">
           <img src={game.background_image} alt={game.name} />
-        </div>
-        <div className="description">
+        </Media>
+        <Info>
+          <h3>Platforms</h3>
+          <Platforms>
+            {game.platforms.map((data) => (
+              <img
+                alt={data.platform.name}
+                key={data.platform.id}
+                src={data.platform.name}
+              ></img>
+            ))}
+          </Platforms>
+        </Info>
+
+        <Description className="description">
           <p>{game.description_raw}</p>
-        </div>
-        <div className="gallery">
+        </Description>
+        <Gallery className="gallery">
           {screen.results.map((screen) => (
             <img key={screen.id} src={screen.image} alt={screen.image} />
           ))}
-        </div>
+        </Gallery>
       </Detail>
     </CardShadow>
   );
@@ -75,6 +84,70 @@ const Detail = styled(motion.div)`
   z-index: 10;
   img {
     width: 100%;
+  }
+`;
+
+const Stats = styled(motion.div)`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  img {
+    width: 2rem;
+    height: 2rem;
+    display: inline;
+  }
+
+  p {
+    font-size: 1.5rem;
+  }
+
+  .rate {
+    background: #222;
+    color: #fff;
+    padding: 0.6rem;
+    border-radius: 50%;
+    margin-left: 0.5rem;
+    font-size: 1.2rem;
+  }
+  .title {
+    font-family: "Goldman", cursive;
+    font-size: 2.5rem;
+  }
+
+  .rating {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+  }
+`;
+const Info = styled(motion.div)`
+  text-align: center;
+`;
+const Platforms = styled(motion.div)`
+  display: flex;
+  justify-content: space-evenly;
+  img {
+    margin-left: 3rem;
+  }
+`;
+
+const Media = styled(motion.div)`
+  margin-top: 5rem;
+  img {
+    width: 100%;
+    border-radius: 1rem;
+  }
+`;
+
+const Description = styled(motion.div)`
+  margin: 5rem 0rem;
+`;
+
+const Gallery = styled(motion.div)`
+  img {
+    border-radius: 1rem;
   }
 `;
 
