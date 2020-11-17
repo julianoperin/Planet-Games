@@ -9,8 +9,13 @@ import GameDetail from "../components/GameDetail";
 // Style / Animation
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import { useLocation } from "react-router-dom";
 
 const Home = () => {
+  // current location
+  const location = useLocation();
+  const path = location.pathname.split("/");
+  console.log(path);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loadGames());
@@ -20,7 +25,7 @@ const Home = () => {
 
   return (
     <GameList>
-      <GameDetail />
+      {/* <GameDetail /> */}
       <h2>Upcoming Games</h2>
       <Games>
         {upcoming.map((game) => (
