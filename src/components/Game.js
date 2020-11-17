@@ -15,6 +15,7 @@ const Game = ({ name, released, image, id }) => {
   // load details of each GAME
   const dispatch = useDispatch();
   const loadDetailHandler = () => {
+    document.body.style.overflow = "hidden";
     dispatch(loadDetail(id));
   };
   return (

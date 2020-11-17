@@ -46,6 +46,7 @@ const GlobalStyles = createGlobalStyle`
         text-decoration: none;
 
     }
+    img{display: block;}
 
 `;
 
