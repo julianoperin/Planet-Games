@@ -27,6 +27,8 @@ const GlobalStyles = createGlobalStyle`
     body{
         font-family: 'Spectral', serif;
         width: 100%;
+        /* background: #141414; */
+        background: #F7F3F0;
     }
     h2{
         text-align: center;

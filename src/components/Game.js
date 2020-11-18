@@ -12,7 +12,6 @@ import { loadDetail } from "../actions/detailAction";
 import { Link } from "react-router-dom";
 // resize image
 import { smallImage } from "../util";
-
 const Game = ({ name, released, image, id }) => {
   // load details of each GAME
   const dispatch = useDispatch();
