@@ -62,6 +62,8 @@ const GameDetail = ({ pathId }) => {
 
   //Data
   const { screen, game, isLoading } = useSelector((state) => state.detail);
+  console.log(game);
+
   return (
     <>
       {!isLoading && (
@@ -72,6 +74,9 @@ const GameDetail = ({ pathId }) => {
                 <motion.h3 layoutId={`title ${pathId}`}>{game.name}</motion.h3>
                 <p>Rating: {game.rating}</p>
                 {getStars()}
+              </div>
+              <div className="release-date">
+                <p>Released: {game.released}</p>
               </div>
               <Info>
                 <h3>Platforms</h3>

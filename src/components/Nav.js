@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import logo from "../img/logo.svg";
+import rawg from "../img/rawg.svg";
 
 //Redux and Routes
 import { fetchSearch } from "../actions/gamesAction";
@@ -24,20 +25,36 @@ const Nav = () => {
     dispatch({ type: "CLEAR_SEARCHED" });
   };
   return (
-    <StyledNav>
-      <Logo onClick={clearSearched}>
-        <img src={logo} alt="logo" />
-        <h1>PlanetGames</h1>
-      </Logo>
-      <form className="search">
-        <input value={textInput} onChange={inputHandler} type="text" />
-        <button onClick={submitSearch} type="submit">
-          Search
-        </button>
-      </form>
-    </StyledNav>
+    <Wrap className="wrap">
+      <img className="api" src={rawg} alt="api" />
+      <StyledNav>
+        <Logo onClick={clearSearched}>
+          <img src={logo} alt="logo" />
+          <h1 className="logo-title">Planet Games</h1>
+        </Logo>
+        <form className="search">
+          <input value={textInput} onChange={inputHandler} type="text" />
+          <button onClick={submitSearch} type="submit">
+            Search
+          </button>
+        </form>
+      </StyledNav>
+    </Wrap>
   );
 };
+
+const Wrap = styled(motion.div)`
+  position: relative;
+
+  .api {
+    width: 250px;
+    position: absolute;
+    right: 3%;
+    top: 15%;
+    background: #f7f3f0;
+  }
+`;
+
 const StyledNav = styled(motion.nav)`
   padding: 0.7rem 1.5rem;
   text-align: center;
@@ -82,6 +99,12 @@ const Logo = styled(motion.div)`
     height: 3rem;
     width: 3rem;
     margin-right: 1rem;
+  }
+
+  .logo-title {
+    font-size: 3rem;
+    font-family: "Fondamento", cursive;
+    font-style: italic;
   }
 `;
 
