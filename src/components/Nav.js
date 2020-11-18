@@ -12,7 +12,7 @@ const Nav = () => {
         <h1> Planet Games</h1>
       </Logo>
       <div className="search">
-        <input type="text" />
+        <input type="text" placeholder="Search for games..." />
         <button>Search</button>
       </div>
     </StyledNav>
@@ -24,22 +24,31 @@ const StyledNav = styled(motion.nav)`
   input {
     width: 30%;
     font-size: 1.5rem;
-    padding: 0.5rem;
+    padding: 0.8rem 1.5rem;
     border: none;
     margin-top: 1rem;
-    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.3);
     border-top-left-radius: 25px;
     border-bottom-left-radius: 25px;
   }
   button {
     font-size: 1.5rem;
     border: none;
-    padding: 0.5rem 2rem;
+    padding: 0.8rem 2rem;
     cursor: pointer;
-    background: #ff7676;
+    background: #333;
     color: white;
     border-top-right-radius: 25px;
     border-bottom-right-radius: 25px;
+  }
+
+  button:hover {
+    transform: scale(1.015);
+  }
+
+  button:focus,
+  input:focus {
+    outline: none;
   }
 `;
 

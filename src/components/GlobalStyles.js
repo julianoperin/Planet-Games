@@ -48,6 +48,10 @@ const GlobalStyles = createGlobalStyle`
     }
     img{display: block;}
 
+    input{
+        /* // font-family: 'Spectral', serif; */
+    }
+
 `;
 
 export default GlobalStyles;
