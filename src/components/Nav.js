@@ -19,14 +19,14 @@ const Nav = () => {
   );
 };
 const StyledNav = styled(motion.nav)`
-  padding: 3rem 5rem;
+  padding: 0.7rem 1.5rem;
   text-align: center;
   input {
     width: 30%;
     font-size: 1.5rem;
     padding: 0.8rem 1.5rem;
     border: none;
-    margin-top: 1rem;
+    margin-top: 0.2rem;
     box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.3);
     border-top-left-radius: 25px;
     border-bottom-left-radius: 25px;
@@ -54,7 +54,8 @@ const StyledNav = styled(motion.nav)`
 
 const Logo = styled(motion.div)`
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
+  align-items: center;
   padding: 1rem;
   cursor: pointer;
   img {
