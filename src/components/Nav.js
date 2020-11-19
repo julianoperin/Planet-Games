@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import logo from "../img/logo.svg";
-import rawg from "../img/rawg.svg";
+import rawg from "../img/rawg.png";
 
 //Redux and Routes
 import { fetchSearch } from "../actions/gamesAction";
@@ -33,7 +33,12 @@ const Nav = () => {
           <h1 className="logo-title">Planet Games</h1>
         </Logo>
         <form className="search">
-          <input value={textInput} onChange={inputHandler} type="text" />
+          <input
+            placeholder="Search for games..."
+            value={textInput}
+            onChange={inputHandler}
+            type="text"
+          />
           <button onClick={submitSearch} type="submit">
             Search
           </button>
@@ -51,7 +56,6 @@ const Wrap = styled(motion.div)`
     position: absolute;
     right: 3%;
     top: 15%;
-    background: #f7f3f0;
   }
 `;
 
@@ -90,6 +94,7 @@ const StyledNav = styled(motion.nav)`
 `;
 
 const Logo = styled(motion.div)`
+  color: #fff;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -105,6 +110,7 @@ const Logo = styled(motion.div)`
     font-size: 3rem;
     font-family: "Fondamento", cursive;
     font-style: italic;
+    color: #999;
   }
 `;
 

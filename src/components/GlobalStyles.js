@@ -14,21 +14,25 @@ const GlobalStyles = createGlobalStyle`
     }
 
     html{
-        &::-webkit-scrollbar{
-            width: 0.5rem;
-        }
-        &::-webkit-scrollbar-thumb{
-            background-color: gray;
-        }
-        &::-webkit-scrollbar-track {
-    background: white;
+        &::-webkit-scrollbar {
+    width: 0.7rem;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #999;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #000;
+  }
   }
     }
     body{
         font-family: 'Spectral', serif;
         width: 100%;
         /* background: #141414; */
-        background: #F7F3F0;
+        /* background: #F7F3F0; */
+        background: #000;
     }
     h2{
         text-align: center;

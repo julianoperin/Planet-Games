@@ -31,11 +31,16 @@ const Game = ({ name, released, image, id }) => {
 
 const StyledGame = styled(motion.div)`
   min-height: 30vh;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  box-shadow: 0 -2px 10px rgba(50, 120, 150, 1);
   text-align: center;
   border-radius: 2rem;
   cursor: pointer;
   overflow: hidden;
+  transition: transform ease 0.4s;
+
+  :hover {
+    transform: scale(1.03);
+  }
   img {
     width: 100%;
     height: 35vh;
@@ -46,6 +51,8 @@ const StyledGame = styled(motion.div)`
   .card-title {
     font-size: 1.2rem;
     padding: 0.8rem;
+    color: #fff;
+    opacity: 0.7;
   }
 `;
 

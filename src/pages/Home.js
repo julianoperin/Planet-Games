@@ -95,6 +95,7 @@ const GameList = styled(motion.div)`
   padding: 0rem 5rem;
   h2 {
     padding: 2.5rem 0rem;
+    color: #999;
   }
 `;
 const Games = styled(motion.div)`

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 //Styling and Animation
 import styled from "styled-components";
 import { motion } from "framer-motion";
@@ -13,9 +14,6 @@ import xbox from "../img/xbox.svg";
 import nintendo from "../img/nintendo.svg";
 import apple from "../img/apple.svg";
 import gamepad from "../img/gamepad.svg";
-//Star Images
-import starEmpty from "../img/star-empty.png";
-import starFull from "../img/star-full.png";
 
 const GameDetail = ({ pathId }) => {
   const history = useHistory();
@@ -27,19 +25,6 @@ const GameDetail = ({ pathId }) => {
       document.body.style.overflow = "auto";
       history.push("/");
     }
-  };
-  //Get Stars
-  const getStars = () => {
-    const stars = [];
-    const rating = Math.floor(game.rating);
-    for (let i = 1; i <= 5; i++) {
-      if (i <= rating) {
-        stars.push(<img alt="star" key={i} src={starFull}></img>);
-      } else {
-        stars.push(<img alt="star" key={i} src={starEmpty}></img>);
-      }
-    }
-    return stars;
   };
 
   //GET PLATFORM IMAGES
@@ -69,15 +54,33 @@ const GameDetail = ({ pathId }) => {
       {!isLoading && (
         <CardShadow className="shadow" onClick={exitDetailHander}>
           <Detail layoutId={pathId}>
-            <Stats>
+            <MainTitle className="main-title" layoutId={`title ${pathId}`}>
+              {game.name}
+            </MainTitle>
+            <DateRate>
               <div className="rating">
-                <motion.h3 layoutId={`title ${pathId}`}>{game.name}</motion.h3>
-                <p>Rating: {game.rating}</p>
-                {getStars()}
+                <p>
+                  Rating: <span className="rate-number">{game.rating}</span>
+                </p>
               </div>
-              <div className="release-date">
-                <p>Released: {game.released}</p>
+              <div>
+                <p>
+                  Released:{" "}
+                  <span className="release-date"> {game.released}</span>
+                </p>
               </div>
+            </DateRate>
+            <Media>
+              <motion.img
+                layoutId={`image ${pathId}`}
+                src={smallImage(game.background_image, 1280)}
+                alt={game.background_image}
+              />
+            </Media>
+            <Description>
+              <p>{game.description_raw}</p>
+            </Description>
+            <Stats>
               <Info>
                 <h3>Platforms</h3>
                 <Platforms>
@@ -91,16 +94,6 @@ const GameDetail = ({ pathId }) => {
                 </Platforms>
               </Info>
             </Stats>
-            <Media>
-              <motion.img
-                layoutId={`image ${pathId}`}
-                src={smallImage(game.background_image, 1280)}
-                alt={game.background_image}
-              />
-            </Media>
-            <Description>
-              <p>{game.description_raw}</p>
-            </Description>
             <div className="gallery">
               {screen.results.map((screen) => (
                 <img
@@ -110,6 +103,12 @@ const GameDetail = ({ pathId }) => {
                 />
               ))}
             </div>
+            <Sellers>
+              <h3>Publisher</h3>
+              {game.publishers.map((data) => (
+                <p className="company">- {data.name}</p>
+              ))}
+            </Sellers>
           </Detail>
         </CardShadow>
       )}
@@ -128,36 +127,82 @@ const CardShadow = styled(motion.div)`
   z-index: 5;
 
   &::-webkit-scrollbar {
-    width: 0.5rem;
+    width: 0.7rem;
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: #ff7676;
+    background-color: #999;
   }
 
   &::-webkit-scrollbar-track {
-    background: white;
+    background: #000;
   }
 `;
 
 const Detail = styled(motion.div)`
-  width: 80%;
+  margin-top: 6rem;
+  width: 50%;
   border-radius: 1rem;
   padding: 2rem 5rem;
-  background: white;
+  background: #111;
   position: absolute;
-  left: 10%;
-  color: black;
+  left: 25%;
+  color: #999;
   z-index: 10;
+
   img {
     width: 100%;
+    border-radius: 1rem;
+  }
+
+  .gallery {
+    img {
+      margin: 2rem 0rem;
+      border-radius: 1rem;
+    }
+  }
+`;
+
+const MainTitle = styled(motion.div)`
+  font-family: "Goldman", cursive;
+  text-align: center;
+  font-size: 2.3rem;
+`;
+
+const DateRate = styled(motion.div)`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 2.8rem 0rem;
+  font-size: 1.5rem;
+
+  .rate-number {
+    margin: 0.7rem;
+    padding: 0.5rem 1.3rem;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    background: #999;
+    color: #000;
+    font-style: bold;
+  }
+
+  .release-date {
+    margin: 0.7rem;
+    padding: 0.3rem 1rem;
+    font-size: 1.5rem;
+    background: #999;
+    color: #000;
+    font-style: bold;
+    border-radius: 2rem;
   }
 `;
 
 const Stats = styled(motion.div)`
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
+
   img {
     width: 2rem;
     height: 2rem;
@@ -165,25 +210,42 @@ const Stats = styled(motion.div)`
   }
 `;
 const Info = styled(motion.div)`
-  text-align: center;
+  h3 {
+    color: #999 !important;
+    font-size: 2rem;
+    text-align: center;
+  }
 `;
 const Platforms = styled(motion.div)`
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
   img {
-    margin-left: 3rem;
+    margin-left: 2rem;
+  }
+`;
+
+const Sellers = styled(motion.div)`
+  text-align: center;
+
+  h3 {
+    color: #999;
+  }
+  p {
+    font-size: 1.2rem;
+    opacity: 0.7;
   }
 `;
 
 const Media = styled(motion.div)`
-  margin-top: 5rem;
+  margin-top: 2rem;
   img {
     width: 100%;
   }
 `;
 
 const Description = styled(motion.div)`
-  margin: 5rem 0rem;
+  margin: 2rem 0rem 0rem 0rem;
 `;
 
 export default GameDetail;
